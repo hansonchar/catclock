@@ -13,14 +13,21 @@ XLIB      = -lX11
 MOTIFLIBS = -lXm -lXt
 EXTENSIONLIB = -lXext
 SYSLIBS   = -lm
-LIBS      = -L/opt/local/lib $(MOTIFLIBS) $(EXTENSIONLIB) $(XLIB) $(SYSLIBS)
+
+# LIBS      = -L/opt/local/lib $(MOTIFLIBS) $(EXTENSIONLIB) $(XLIB) $(SYSLIBS)
+LIBS      = -L/opt/X11/lib -L/opt/homebrew/Cellar/openmotif/2.3.8_2/lib $(MOTIFLIBS) $(EXTENSIONLIB) $(XLIB) $(SYSLIBS)
+
 ifeq ($(WITH_TEMPO_TRACKER), 1)
 	LIBS += -lpulse -lpulse-simple -lpthread -laubio
 endif
 #LIBS      = $(MOTIFLIBS) $(EXTENSIONLIB) $(XLIB) $(SYSLIBS)
 
-LOCALINCS = -I.
-MOTIFINCS = -I/opt/local/include -I/opt/local/include/X11
+# LOCALINCS = -I.
+LOCALINCS = -I. -I/usr/local/include
+
+# MOTIFINCS = -I/opt/local/include -I/opt/local/include/X11
+MOTIFINCS = -I/opt/X11/include -I/opt/homebrew/Cellar/openmotif/2.3.8_2/include -I/opt/homebrew/include
+
 #MOTIFINCS = -I/usr/include
 INCS      = $(LOCALINCS) $(MOTIFINCS)
 
@@ -28,7 +35,8 @@ INCS      = $(LOCALINCS) $(MOTIFINCS)
 CDEBUGFLAGS = -g
 CFLAGS      = $(DEFINES) $(INCS) $(CDEBUGFLAGS)
 
-DESTINATION = /udir/pjs/bin
+# DESTINATION = /udir/pjs/bin
+DESTINATION = /Users/hchar/bin
 
 PROG  = xclock
 DEBUG = debug
