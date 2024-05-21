@@ -313,6 +313,7 @@ int main(argc, argv)
 
         { XtNbackground, XtCBackground, XtRPixel, sizeof(Pixel),
           XtOffset(ApplicationDataPtr, background),
+        //   XtRString, (XtPointer)"None" },
           XtRString, (XtPointer)"XtdefaultBackground" },
 
         { "highlight", "HighlightColor", XtRPixel, sizeof(Pixel),
