@@ -33,62 +33,62 @@ for each minute and stroke marks on each hour. Digital mode displays an
 ascii string corresponding to the time. Cat mode displays an image of
 the famous "Kit Cat (R)" plastic clock, complete with pendulum tail. 
 The default is \fIanalog\fP.
-.TP 8
+.TP
 .B \-alarm 
 Turns the alarm on.
 If the alarm file exists and has valid alarm entries, a bell
 is displayed in the clock window.
-.TP 8
+.TP
 .B \-bell
 Turns the alarm bell on, sounding when an alarm is reached.
-.TP 8
+.TP
 .B \-chime
 This option indicates that the clock should chime 
 once on the half hour and twice on the hour.
-.TP 8
+.TP
 .B \-file \fIalarmfile\fP
 Specifies an alternate alarm file.
 The default is \fI~/.Xclock\fP.
-.TP 8
+.TP
 .B \-hd \fIcolor\fP
 This option specifies the color of the hands on an analog clock.  The default
 is \fIblack\fP.
-.TP 8
+.TP
 .B \-hl \fIcolor\fP
 This option specifies the color of the edges of the hands on an analog clock,
 and is only useful on color displays.  The default is \fIblack\fP.
-.TP 8
+.TP
 .B \-catcolor \fIcolor\fP
 For cat mode -- determines the color of the cat's body.
 The default color is \fIblack\fP.
-.TP 8
+.TP
 .B \-detailcolor \fIcolor\fP
 For cat mode -- determines the color of the cat's face, paws, and belly.
 The default color is \fIwhite\fP.
-.TP 8
+.TP
 .B \-tiecolor \fIcolor\fP
 For cat mode -- determines the color of the cat's tie.
 The default color is \fIwhite\fP.
-.TP 8
+.TP
 .B \-update \fIseconds\fP
 This option specifies the frequency in seconds at which \fIxclock\fP
 should update its display.  If the clock is obscured and then exposed,
 it will be updated immediately.  A value of less than 30 seconds will enable a
 second hand on an analog clock.  The default is \fI60\fP.
-.TP 8
+.TP
 .B \-padding \fInumber\fP
 This option specifies the width in pixels of the padding 
 between the window border and clock text or picture.  The default is \fI10\fP
 on a digital clock and \fI8\fP on an analog clock.
-.TP 8
+.TP
 .B \-period \fIseconds\fP
 Gives the period in seconds of the alarm bell (default is \fI60\fP).
-.TP 8
+.TP
 .B \-ntails \fInumber\fP
 In cat mode, determines the number of tails per ``sweep'', which 
 affects the smoothness of the swinging pendulum tail. The default
 is \fI16\fP.
-.TP 8
+.TP
 .B \-help
 This option indicates that a brief summary of the allowed options should be
 printed on the standard error.
@@ -96,63 +96,63 @@ printed on the standard error.
 .SH X DEFAULTS
 This program understands all of the usual Xt resources as well as the following:
 .PP
-.TP 8
+.TP
 .B mode (\fPclass\fB String)
 Specifies the display mode -- \fIanalog\fP, \fIdigital\fP, or \fIcat\fP.  The
 default is \fIanalog\fP.
-.TP 8
+.TP
 .B alarm (\fPclass\fB Boolean)
 Specifies whether or not the alarm should be set on startup.  The
 default is \fIoff\fP.
-.TP 8
+.TP
 .B bell (\fPclass\fB Boolean)
 Specifies whether or not a bell should be rung when the alarm goes off.
 The default is \fIoff\fP.
-.TP 8
+.TP
 .B chime (\fPclass\fB Boolean)
 Specifies whether or not a bell should be rung on the hour and half hour.
 The default is \fIoff\fP.
-.TP 8
+.TP
 .B hands (\fPclass\fB Foreground)
 Specifies the color of the insides of the clock's hands. The default 
 depends on whether
 \fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
 the default is \fIwhite\fP, otherwise the default is \fIblack\fP.
-.TP 8
+.TP
 .B highlight (\fPclass\fB Foreground)
 Specifies the color used to highlight the clock's hands. The default
 depends on whether \fIreverseVideo\fP is specified.  
 If \fIreverseVideo\fP is specified
 the default is \fIwhite\fP, otherwise the default is \fIblack\fP.
-.TP 8
+.TP
 .B catColor (\fPclass\fB Foreground)
 Specifies the color used for the cat's body.. The default
 depends on whether
 \fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
 the default is \fIwhite\fP, otherwise the default is \fIblack\fP.
-.TP 8
+.TP
 .B detailColor (\fPclass\fB Foreground)
 Specifies the color used for the cat's belly, eyes, and paws. The default
 depends on whether
 \fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
 the default is \fIblack\fP, otherwise the default is \fIwhite\fP.
-.TP 8
+.TP
 .B tieColor (\fPclass\fB Foreground)
 Specifies the color used for the cat's bow tie. The default
 depends on whether
 \fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
 the default is \fIblack\fP, otherwise the default is \fIwhite\fP.
-.TP 8
+.TP
 .B update (\fPclass\fB Interval)
 Specifies the frequency in seconds at which the time should be redisplayed.
-.TP 8
+.TP
 .B padding (\fPclass\fB Margin)
 Specifies the amount of internal padding in pixels to be used.  The default is
 \fI8\fP.
-.TP 8
+.TP
 .B period (\fPclass\fB Interval)
 Specifies the period of the alarm bell. The default is \fI60\fP.
-.TP 8
+.TP
 .B nTails (\fPclass\fB Cardinal)
 Specifies the number of tails per sweep.  The default is \fI16\fP.
 
@@ -210,13 +210,11 @@ window.
   Mon. 1:30 pm	Staff meeting
   Thur. 15:30	Management meeting
   11:55 am	Time for lunch
-.fi
-.sp
 .SH ENVIRONMENT
-.TP 8
+.TP
 .B DISPLAY
 to get the default host and display number.
-.TP 8
+.TP
 .B EDITOR
 to specify the editor to use in modifying the alarm file.
 .SH "SEE ALSO"
