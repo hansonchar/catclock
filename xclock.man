@@ -213,7 +213,6 @@ window.
 .fi
 .sp
 .SH ENVIRONMENT
-.PP
 .TP 8
 .B DISPLAY
 to get the default host and display number.
@@ -240,5 +239,3 @@ Deanna Hohn (DEC) created the cat pixmaps.
 .br
 Philip Schneider (DEC) created the pendulum tails and eyes, and ported
 the program to Motif 1.1.
-
-
