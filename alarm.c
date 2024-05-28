@@ -37,6 +37,8 @@ typedef struct _Alarm {
 #define TRUE  1
 #define FALSE 0
 
+const Boolean DEBUG = FALSE;
+
 /*
  *  Globals (ugh!)
  */
@@ -51,6 +53,11 @@ static int          alarmIndex;
 static int          alarmLen;
 static int          alarmBell;
 static int          alarmBellCnt;
+
+// A hack to prevent the alarm from hanging.
+const int MAX_BELL_COUNT = 60;
+static int bellCount;
+
 static Boolean     *alarmOn;
 static Boolean      alarmRun;
 static Boolean     *alarmState;
@@ -80,6 +87,8 @@ static XmFontList   xmFontList;
 static void HideBell(void);
 static void TextScroll(int);
 static void Set_Alarm(void);
+
+static void ResetAlarm();
 
 void InitBellAlarm(win, width, height, fontInfo, fontList, fg, bg, state, on)
     Window        win;
@@ -154,6 +163,10 @@ static void HideBell()
 
 void AlarmAnnounce()
 {
+    if (DEBUG) {
+        printf("[DEBUG] %s\n", __func__);
+    }
+
     int               i, w;
     char              buf[BUFSIZ];
     struct itimerval  tv;
@@ -192,6 +205,10 @@ void AlarmAnnounce()
 static void TextScroll(val)
     int  val;
 {
+    if (DEBUG) {
+        printf("[DEBUG] %s: %d\n", __func__, bellCount);
+    }
+
     int       x, index;
     XmString  xmString;
     
@@ -221,13 +238,25 @@ static void TextScroll(val)
     if (alarmBell && --alarmBellCnt <= 0) {
         XBell(dpy, 25);
         alarmBellCnt = ALARMBELLSEC * alarmBell;
+        ++bellCount;
     }
     XFlush(dpy);
+
+    // Turns off and reset the alarm to prevent the clock from hanging.
+    if (bellCount >= MAX_BELL_COUNT) {
+        bellCount = 0;
+        AlarmOff();
+        ResetAlarm();
+    }
 }
 
 static void ReadAlarmFile(file)
     char  *file;
 {
+    if (DEBUG) {
+        printf("[DEBUG] %s\n", __func__);
+    }
+
     char       *cp, *tp, *dp;
     int         hour, minute, pm, day;
     FILE       *fp;
@@ -406,6 +435,10 @@ void SetAlarm(file)
 
 static void ResetAlarm()
 {
+    if (DEBUG) {
+        printf("[DEBUG] %s\n", __func__);
+    }
+
     if (!*alarmFile) {
         return;
     }
@@ -426,6 +459,10 @@ static void ResetAlarm()
 
 static void Set_Alarm()
 {
+    if (DEBUG) {
+        printf("[DEBUG] %s\n", __func__);
+    }
+
     struct itimerval tv;
     
     if (alarmState) {
@@ -458,6 +495,10 @@ void SetBell(seconds)
 
 void AlarmOff(void)
 {
+    if (DEBUG) {
+        printf("[DEBUG] %s\n", __func__);
+    }
+
     struct itimerval tv;
     
     alarmRun = FALSE;
